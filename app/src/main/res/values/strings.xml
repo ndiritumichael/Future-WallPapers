@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Future WallPapers</string>
+    <string name="title_wallpapers">Wallpapers</string>
+    <string name="title_collections">Collections</string>
+    <string name="title_favorites">Favorites</string>
+    <string name="small_image_description">small image description</string>
+    <string name="ticked_icon">Ticked Icon</string>
+    <string name="unticked_icon">unticked icon</string>
+</resources>

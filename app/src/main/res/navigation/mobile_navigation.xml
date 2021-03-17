@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_wallpapers">
+
+    <fragment
+        android:id="@+id/navigation_wallpapers"
+        android:name="com.keapps.futurewallpapers.ui.wallpapers.WallpapersFragment"
+        android:label="@string/title_wallpapers"
+        tools:layout="@layout/fragment_wallpapers" >
+        <action
+            android:id="@+id/action_navigation_wallpapers_to_fullScreenImage"
+            app:destination="@id/fullScreenImage" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_collections"
+        android:name="com.keapps.futurewallpapers.ui.collections.CollectionsFragment"
+        android:label="@string/title_collections"
+        tools:layout="@layout/fragment_collections" />
+
+    <fragment
+        android:id="@+id/navigation_favorites"
+        android:name="com.keapps.futurewallpapers.ui.favorites.FavoritesFragment"
+        android:label="@string/title_favorites"
+        tools:layout="@layout/fragment_favorites" />
+    <activity
+        android:id="@+id/fullScreenImage"
+        android:name="com.keapps.futurewallpapers.FullScreenImage"
+        android:label="activity_full_screen_image"
+        tools:layout="@layout/activity_full_screen_image" />
+</navigation>
