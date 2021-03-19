@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FullScreenImage">
+    tools:context=".ui.fullscreen.FullScreenImage">
     <ImageView
 
         android:id="@+id/fullscreenimage"
@@ -12,7 +12,8 @@ android:scaleType="fitXY"
 
 
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:contentDescription="@string/title_favorites" />
 
  <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_marginBottom="8dp"
@@ -35,7 +36,7 @@ android:scaleType="fitXY"
 
             android:textColor="@android:color/white"
             android:layout_height="wrap_content"
-            android:text="apply"/>
+            android:text="@string/apply"/>
     </androidx.appcompat.widget.LinearLayoutCompat>
  <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_marginBottom="8dp"
@@ -58,7 +59,7 @@ android:scaleType="fitXY"
 
             android:textColor="@android:color/white"
             android:layout_height="wrap_content"
-            android:text="info"/>
+            android:text="@string/info"/>
     </androidx.appcompat.widget.LinearLayoutCompat>
     <ImageView
         android:layout_width="wrap_content"

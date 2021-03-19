@@ -14,6 +14,15 @@ private val listener : OnClickPicListener) :
 
     inner class WallPaperViewHolder(val binding: WallpapersAdapterBinding) :RecyclerView.ViewHolder(binding.root),
         View.OnClickListener {
+
+        fun showFav(){
+            binding.favoriteTicked.visibility = View.VISIBLE
+            binding.favoriteUnticked.visibility = View.GONE
+        }
+        fun showNotFav(){
+            binding.favoriteUnticked.visibility= View.VISIBLE
+            binding.favoriteTicked.visibility = View.GONE
+        }
         
         init {
             binding.apply {
@@ -45,11 +54,18 @@ listener.onItemClicked(wallpaperList[position])
 
       holder.apply {
           binding.wallpaperTitle.text = wallpaperList[position].Title
+          if (wallpaperList[position].favorites){
+            showFav()
+          }else{
+            showNotFav()
+          }
           binding.wallpaperid.load(
                   wallpaperList[position].lowHd
           )
       }
     }
+
+
 
     override fun getItemCount() =wallpaperList.size
     fun updateData(list: List<WallPaperModel>?) {

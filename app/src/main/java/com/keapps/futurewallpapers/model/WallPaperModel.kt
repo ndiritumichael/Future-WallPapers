@@ -11,5 +11,6 @@ data class WallPaperModel(
     val Title : String,
     val lowHd :  String,
     val fullHd : String,
-    val authorName : String
+    val authorName : String,
+    val favorites : Boolean
 )

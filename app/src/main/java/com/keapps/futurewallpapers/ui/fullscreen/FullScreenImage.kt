@@ -1,8 +1,7 @@
-package com.keapps.futurewallpapers
+package com.keapps.futurewallpapers.ui.fullscreen
 
 import android.app.WallpaperManager
 import android.graphics.Bitmap
-import android.graphics.BitmapFactory
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -10,9 +9,6 @@ import androidx.core.graphics.drawable.toBitmap
 import androidx.navigation.navArgs
 import coil.load
 import com.keapps.futurewallpapers.databinding.ActivityFullScreenImageBinding
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 import java.io.IOException
 
 class FullScreenImage : AppCompatActivity() {
