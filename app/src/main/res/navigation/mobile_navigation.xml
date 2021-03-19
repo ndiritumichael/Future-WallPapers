@@ -30,5 +30,13 @@
         android:id="@+id/fullScreenImage"
         android:name="com.keapps.futurewallpapers.FullScreenImage"
         android:label="activity_full_screen_image"
-        tools:layout="@layout/activity_full_screen_image" />
+        tools:layout="@layout/activity_full_screen_image" >
+        <argument
+            android:name="imageLink"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="title"
+            app:argType="string" />
+    </activity>
 </navigation>

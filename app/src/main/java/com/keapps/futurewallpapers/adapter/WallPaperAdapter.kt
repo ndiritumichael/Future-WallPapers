@@ -12,12 +12,22 @@ class WallPaperAdapter(var wallpaperList: List<WallPaperModel>,
 private val listener : OnClickPicListener) :
     RecyclerView.Adapter<WallPaperAdapter.WallPaperViewHolder>() {
 
-    inner class WallPaperViewHolder(val binding: WallpapersAdapterBinding) :RecyclerView.ViewHolder(binding.root) {
+    inner class WallPaperViewHolder(val binding: WallpapersAdapterBinding) :RecyclerView.ViewHolder(binding.root),
+        View.OnClickListener {
         
         init {
             binding.apply {
+                root.setOnClickListener(this@WallPaperViewHolder)
 
             }
+        }
+
+        override fun onClick(v: View?) {
+val position = adapterPosition
+            if (position!= RecyclerView.NO_POSITION){
+listener.onItemClicked(wallpaperList[position])
+            }
+
         }
 
     }
@@ -32,6 +42,7 @@ private val listener : OnClickPicListener) :
     }
 
     override fun onBindViewHolder(holder: WallPaperViewHolder, position: Int) {
+
       holder.apply {
           binding.wallpaperTitle.text = wallpaperList[position].Title
           binding.wallpaperid.load(
@@ -49,7 +60,7 @@ private val listener : OnClickPicListener) :
 
     }
     interface OnClickPicListener {
-        fun onItemClicked()
+        fun onItemClicked(wallpaper : WallPaperModel)
 
     }
 }
