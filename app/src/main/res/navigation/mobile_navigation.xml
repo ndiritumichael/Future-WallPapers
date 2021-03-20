@@ -25,10 +25,18 @@
         android:id="@+id/navigation_favorites"
         android:name="com.keapps.futurewallpapers.ui.favorites.FavoritesFragment"
         android:label="@string/title_favorites"
-        tools:layout="@layout/fragment_favorites" />
+        tools:layout="@layout/fragment_favorites" >
+        <action
+            android:id="@+id/action_navigation_favorites_to_fullScreenImage"
+            app:destination="@id/fullScreenImage" />
+    </fragment>
     <activity
         android:id="@+id/fullScreenImage"
-        android:name="com.keapps.futurewallpapers.FullScreenImage"
+        android:name="com.keapps.futurewallpapers.ui.fullscreen.FullScreenImage"
         android:label="activity_full_screen_image"
-        tools:layout="@layout/activity_full_screen_image" />
+        tools:layout="@layout/activity_full_screen_image" >
+        <argument
+            android:name="imageId"
+            app:argType="integer" />
+    </activity>
 </navigation>

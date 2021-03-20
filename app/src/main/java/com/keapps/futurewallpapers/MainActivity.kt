@@ -1,7 +1,9 @@
 package com.keapps.futurewallpapers
 
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toolbar
+import androidx.activity.viewModels
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
@@ -10,10 +12,14 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.appbar.MaterialToolbar
 import com.keapps.futurewallpapers.databinding.ActivityMainBinding
+import com.keapps.futurewallpapers.ui.wallpapers.WallViewModelFactory
+import com.keapps.futurewallpapers.ui.wallpapers.WallpapersViewModel
 
 class MainActivity : AppCompatActivity() {
  private lateinit var mainActivityMainBinding: ActivityMainBinding
-
+ private val wallpapersViewModel : WallpapersViewModel by viewModels {
+     WallViewModelFactory((application as WallPaperApplication).repository)
+ }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mainActivityMainBinding = ActivityMainBinding.inflate(layoutInflater)
@@ -30,5 +36,10 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
 
         navView.setupWithNavController(navController)
+        wallpapersViewModel.wallpaperlist.observe(this){
+            it.forEach{
+                Log.d("MainActivity","data is $it")
+            }
+        }
     }
 }

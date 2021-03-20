@@ -1,72 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    app:cardCornerRadius="8dp"
-android:layout_marginTop="4dp"
-    android:layout_marginEnd="4dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     android:layout_marginStart="4dp"
+    android:layout_marginTop="4dp"
+    android:layout_marginEnd="4dp"
     android:layout_marginBottom="4dp"
 
-    android:backgroundTint="#000000"
-
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-  <androidx.constraintlayout.widget.ConstraintLayout
-      android:layout_width="match_parent"
-      android:layout_height="match_parent">
-      <ImageView
-          android:src="@drawable/placeholder"
-          app:layout_constraintTop_toTopOf="parent"
-          android:layout_width="match_parent"
-          android:layout_height="250dp"
-          android:id="@+id/wallpaperid"
-          android:scaleType="centerCrop"
-          android:contentDescription="@string/small_image_description"
-          />
-      <com.google.android.material.textview.MaterialTextView
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:id="@+id/wallpaper_title"
-          app:layout_constraintBottom_toBottomOf="@id/wallpaperid"
-          app:layout_constraintStart_toStartOf="@id/wallpaperid"
-          android:textSize="32dp"
-          android:textColor="#FFFFFF"
-          android:textStyle="bold"
-          android:layout_marginBottom="16dp"
-          android:layout_marginStart="8dp"
-          android:text="Pubg Mobile"/>
-      <ImageView
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:visibility="gone"
-          android:src="@drawable/ic_favorite_ticked"
-          android:id="@+id/favorite_ticked"
-          app:layout_constraintBottom_toBottomOf="@id/wallpaperid"
-          app:layout_constraintEnd_toEndOf="@id/wallpaperid"
-          android:layout_marginBottom="16dp"
-          android:layout_marginEnd="8dp"
-          android:contentDescription="@string/ticked_icon" />
-      <ImageView
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:src="@drawable/ic_baseline_favorite_unticked"
-          android:id="@+id/favorite_unticked"
-          app:layout_constraintBottom_toBottomOf="@id/wallpaperid"
-          app:layout_constraintEnd_toEndOf="@id/wallpaperid"
-          android:layout_marginBottom="16dp"
-          android:layout_marginEnd="8dp"
-          android:contentDescription="@string/unticked_icon" />
-      <com.google.android.material.progressindicator.CircularProgressIndicator
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          app:layout_constraintBottom_toBottomOf="@id/wallpaperid"
-          app:layout_constraintStart_toStartOf="@id/wallpaperid"
-          app:layout_constraintEnd_toEndOf="@id/wallpaperid"
-          app:layout_constraintTop_toTopOf="@id/wallpaperid"
-          />
 
 
-  </androidx.constraintlayout.widget.ConstraintLayout>
+    android:orientation="vertical"
+    app:cardCornerRadius="8dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/wallpaperid"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:contentDescription="@string/small_image_description"
+            android:scaleType="centerCrop"
+
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/wallpaper_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginBottom="16dp"
+            android:text="@string/pubg_mobile"
+            android:textColor="#FFFFFF"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/wallpaperid"
+            app:layout_constraintStart_toStartOf="@id/wallpaperid" />
+
+        <ImageView
+            android:id="@+id/favorite_ticked"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="16dp"
+            android:contentDescription="@string/ticked_icon"
+            android:src="@drawable/ic_favorite_ticked"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@id/wallpaperid"
+            app:layout_constraintEnd_toEndOf="@id/wallpaperid" />
+
+        <ImageView
+            android:id="@+id/favorite_unticked"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="16dp"
+            android:contentDescription="@string/unticked_icon"
+            android:src="@drawable/ic_baseline_favorite_unticked"
+            app:layout_constraintBottom_toBottomOf="@id/wallpaperid"
+            app:layout_constraintEnd_toEndOf="@id/wallpaperid" />
+
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:foregroundTint="@color/black"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/pic_loading"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </com.google.android.material.card.MaterialCardView>

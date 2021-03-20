@@ -1,22 +1,34 @@
 package com.keapps.futurewallpapers.ui.wallpapers
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import androidx.lifecycle.*
 import com.keapps.futurewallpapers.model.WallPaperModel
-import com.keapps.futurewallpapers.repository.Wallpapers
+import com.keapps.futurewallpapers.repository.WallpapersRepo
+import kotlinx.coroutines.launch
+import java.lang.IllegalArgumentException
 
-class WallpapersViewModel : ViewModel() {
-    private val _wallpaperlist : MutableLiveData<List<WallPaperModel>> = MutableLiveData()
-    init {
-        _wallpaperlist.value = Wallpapers().list
+
+class WallpapersViewModel(private val wallpapersRepo: WallpapersRepo) : ViewModel() {
+
+    val wallpaperlist  :LiveData<List<WallPaperModel>> =wallpapersRepo.allWallappers.asLiveData()
+
+    fun insert(wallpaper : WallPaperModel) = viewModelScope.launch {
+        wallpapersRepo.insertWallpaper(wallpaper)
+    }
+
+    fun updateData(wallPaperModel: WallPaperModel)= viewModelScope.launch{
+        wallpapersRepo.updateData(wallPaperModel)
+
     }
 
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is home Fragment"
+}
+
+class WallViewModelFactory(private val repository:WallpapersRepo):ViewModelProvider.Factory{
+    override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+        if (modelClass.isAssignableFrom(WallpapersViewModel::class.java)){
+            return WallpapersViewModel(repository)as T
+        }
+        throw IllegalArgumentException("Unkown Viewmodel Class")
     }
-    val text: LiveData<String> = _text
-    val wallpaperlist : LiveData<List<WallPaperModel>>
-    get() = _wallpaperlist
+
 }
