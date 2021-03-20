@@ -15,6 +15,10 @@ class WallpapersViewModel(private val wallpapersRepo: WallpapersRepo) : ViewMode
         wallpapersRepo.insertWallpaper(wallpaper)
     }
 
+    fun updateData(wallPaperModel: WallPaperModel)= viewModelScope.launch{
+        wallpapersRepo.updateData(wallPaperModel)
+
+    }
 
 
 }

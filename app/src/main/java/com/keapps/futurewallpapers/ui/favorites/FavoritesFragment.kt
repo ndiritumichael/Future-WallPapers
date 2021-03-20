@@ -36,7 +36,11 @@ class FavoritesFragment : Fragment(),WallPaperAdapter.OnClickPicListener {
         binding = FragmentFavoritesBinding.inflate(inflater,container,false)
 
         gridLayoutManager = GridLayoutManager(context,2)
-        wallpaperAdapter = WallPaperAdapter(emptyList<WallPaperModel>()  , this)
+        wallpaperAdapter = WallPaperAdapter(emptyList<WallPaperModel>()  ,
+                this){ wallPaperModel: WallPaperModel, b: Boolean ->
+            toggleFavorites(wallPaperModel,b)
+
+        }
        binding.wallpaperRecycler.adapter = wallpaperAdapter
         binding.wallpaperRecycler.layoutManager = gridLayoutManager
         return binding.root
@@ -45,13 +49,24 @@ class FavoritesFragment : Fragment(),WallPaperAdapter.OnClickPicListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         favoritesViewModel.favWallPaper.observe(viewLifecycleOwner){ wallpapers ->
+            if (wallpapers.isEmpty()){
+                binding.apply {
+                    animationView.visibility = View.VISIBLE
+                    noFavorites.visibility= View.VISIBLE
+                }
+
+            }
             wallpaperAdapter.updateData(wallpapers)
         }
     }
 
     override fun onItemClicked(wallpaper: WallPaperModel) {
         val action = WallpapersFragmentDirections
-                .actionNavigationWallpapersToFullScreenImage(wallpaper.lowHd,wallpaper.Title)
+                .actionNavigationWallpapersToFullScreenImage(wallpaper.id)
          findNavController().navigate(action)
+    }
+    private fun toggleFavorites(wallPaperModel: WallPaperModel,isTrue:Boolean){
+        wallPaperModel.favorites = isTrue
+        favoritesViewModel.updateData(wallPaperModel)
     }
 }

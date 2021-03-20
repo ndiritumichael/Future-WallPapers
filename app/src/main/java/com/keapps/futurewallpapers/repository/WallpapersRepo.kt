@@ -16,4 +16,13 @@ get() = wallpaperdao.getFavorites()
         wallpaperdao.insert(wallpaper)
     }
 
+    suspend fun updateData(wallPaper: WallPaperModel) {
+        wallpaperdao.update(wallPaper)
+
+    }
+
+   suspend fun fullWallpaper(id: Int) = wallpaperdao.getWallPaper(id)
+
+
+
 }

@@ -6,11 +6,11 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "wallpaper_table")
 data class WallPaperModel(
-    @PrimaryKey
+        @PrimaryKey
     val id : Int,
-    val Title : String,
-    val lowHd :  String,
-    val fullHd : String,
-    val authorName : String,
-    val favorites : Boolean
+        val Title : String,
+        val lowHd :  String,
+        val fullHd : String,
+        val authorName : String,
+        var favorites : Boolean
 )

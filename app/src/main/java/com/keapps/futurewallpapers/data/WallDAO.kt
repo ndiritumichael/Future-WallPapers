@@ -6,7 +6,7 @@ import com.keapps.futurewallpapers.model.WallPaperModel
 import kotlinx.coroutines.flow.Flow
 @Dao
 interface WallDAO {
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(wallpaper:WallPaperModel)
 
     @Query("DELETE FROM wallpaper_table")
@@ -17,6 +17,12 @@ interface WallDAO {
 
      @Query("SELECT * FROM wallpaper_table WHERE favorites = 1")
      fun getFavorites():Flow<List<WallPaperModel>>
+
+     @Update(onConflict = OnConflictStrategy.REPLACE)
+   suspend fun update(wallPaper: WallPaperModel)
+
+   @Query("SELECT * FROM wallpaper_table WHERE id = :wallid")
+   suspend fun getWallPaper( wallid: Int):WallPaperModel?
 
 
 }

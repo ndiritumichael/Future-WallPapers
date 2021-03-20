@@ -3,17 +3,33 @@ package com.keapps.futurewallpapers.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.DrawableRes
 import androidx.recyclerview.widget.RecyclerView
+import coil.ImageLoader
 import coil.load
+import coil.request.ImageRequest
+import coil.request.ImageResult
 import com.keapps.futurewallpapers.databinding.WallpapersAdapterBinding
 import com.keapps.futurewallpapers.model.WallPaperModel
 
 class WallPaperAdapter(var wallpaperList: List<WallPaperModel>,
-private val listener : OnClickPicListener) :
+private val listener : OnClickPicListener,val favListener : (WallPaperModel,Boolean) -> Unit) :
     RecyclerView.Adapter<WallPaperAdapter.WallPaperViewHolder>() {
+
+
 
     inner class WallPaperViewHolder(val binding: WallpapersAdapterBinding) :RecyclerView.ViewHolder(binding.root),
         View.OnClickListener {
+
+        fun bind(wallpaper: WallPaperModel,favListener: (WallPaperModel,Boolean) -> Unit){
+            binding.favoriteTicked.setOnClickListener{
+                favListener(wallpaper,false)
+            }
+            binding.favoriteUnticked.setOnClickListener {
+                favListener(wallpaper,true)
+            }
+
+        }
 
         fun showFav(){
             binding.favoriteTicked.visibility = View.VISIBLE
@@ -51,6 +67,7 @@ listener.onItemClicked(wallpaperList[position])
     }
 
     override fun onBindViewHolder(holder: WallPaperViewHolder, position: Int) {
+        holder.bind(wallpaperList[position],favListener)
 
       holder.apply {
           binding.wallpaperTitle.text = wallpaperList[position].Title
@@ -59,9 +76,18 @@ listener.onItemClicked(wallpaperList[position])
           }else{
             showNotFav()
           }
-          binding.wallpaperid.load(
+
+
+         binding.wallpaperid.load(
                   wallpaperList[position].lowHd
-          )
+          ){
+              crossfade(true)
+             listener(
+                 onSuccess = {_,_ ->
+                 binding.picLoading.visibility = View.GONE
+             })
+          }
+
       }
     }
 
