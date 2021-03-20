@@ -61,9 +61,9 @@ class FavoritesFragment : Fragment(),WallPaperAdapter.OnClickPicListener {
     }
 
     override fun onItemClicked(wallpaper: WallPaperModel) {
-        val action = WallpapersFragmentDirections
-                .actionNavigationWallpapersToFullScreenImage(wallpaper.id)
-         findNavController().navigate(action)
+        val action = FavoritesFragmentDirections.actionNavigationFavoritesToFullScreenImage(wallpaper.id)
+
+      findNavController().navigate(action)
     }
     private fun toggleFavorites(wallPaperModel: WallPaperModel,isTrue:Boolean){
         wallPaperModel.favorites = isTrue

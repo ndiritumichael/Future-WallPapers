@@ -4,6 +4,7 @@ import android.app.WallpaperManager
 import android.graphics.Bitmap
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.core.graphics.drawable.toBitmap
@@ -11,6 +12,7 @@ import androidx.navigation.navArgs
 import coil.load
 import com.keapps.futurewallpapers.WallPaperApplication
 import com.keapps.futurewallpapers.databinding.ActivityFullScreenImageBinding
+import com.keapps.futurewallpapers.model.WallPaperModel
 import java.io.IOException
 
 class FullScreenImage : AppCompatActivity() {
@@ -28,20 +30,36 @@ class FullScreenImage : AppCompatActivity() {
         supportActionBar?.setHomeButtonEnabled(true)
 
         fullScreenViewModel.fullPaper.observe(this){wallPaper ->
-            setupUI(wallPaper.lowHd)
+            setupUI(wallPaper)
            supportActionBar?.title = wallPaper.Title
 
         }
 
     }
 
-    private fun setupUI(image: String) {
+    private fun setupUI(wallPaperModel: WallPaperModel) {
+        if (wallPaperModel.favorites){
+            showFav()
+        }else{
+            showNotFav()
+        }
 
-        binding.fullscreenimage.load(image)
+        binding.fullscreenimage.load(wallPaperModel.lowHd)
 
         binding.applyWallpaper.setOnClickListener {
             bitmap = binding.fullscreenimage.drawable.toBitmap()
             setWallpaper()
+        }
+        binding.favoriteTicked.setOnClickListener {
+
+            toggleFavorites(wallPaperModel,false)
+            showNotFav()
+        }
+        binding.favoriteUnticked.setOnClickListener {
+            toggleFavorites(wallPaperModel,true)
+
+            showFav()
+
         }
     }
 
@@ -64,5 +82,18 @@ class FullScreenImage : AppCompatActivity() {
         } else {
             Toast.makeText(this, "Image has not yet loaded", Toast.LENGTH_SHORT).show()
         }
+    }
+    fun showFav(){
+        binding.favoriteTicked.visibility = View.VISIBLE
+        binding.favoriteUnticked.visibility = View.GONE
+    }
+    fun showNotFav(){
+        binding.favoriteUnticked.visibility= View.VISIBLE
+        binding.favoriteTicked.visibility = View.GONE
+    }
+
+    private fun toggleFavorites(wallPaperModel: WallPaperModel, isTrue:Boolean){
+        wallPaperModel.favorites = isTrue
+        fullScreenViewModel.updateData(wallPaperModel)
     }
 }

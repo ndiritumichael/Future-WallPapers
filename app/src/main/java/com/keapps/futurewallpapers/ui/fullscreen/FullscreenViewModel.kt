@@ -17,6 +17,12 @@ class FullscreenViewModel(val repo : WallpapersRepo): ViewModel() {
         Log.d("FullViewModel","$id")
 
     }
+
+    fun updateData(wallPaperModel: WallPaperModel) = viewModelScope.launch {
+       repo.updateData(wallPaperModel)
+
+
+    }
 }
 
 
