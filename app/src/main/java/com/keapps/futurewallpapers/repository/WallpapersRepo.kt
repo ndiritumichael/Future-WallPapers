@@ -2,12 +2,16 @@ package com.keapps.futurewallpapers.repository
 
 
 import com.keapps.futurewallpapers.data.WallDAO
+import com.keapps.futurewallpapers.model.Categories
 import com.keapps.futurewallpapers.model.WallPaperModel
 import kotlinx.coroutines.flow.Flow
 
 class WallpapersRepo (val wallpaperdao : WallDAO){
     val allWallappers
     get() = wallpaperdao.getAllWallpapers()
+
+    val categories
+    get() = wallpaperdao.getAllCategories()
 
 val favWallPapers
 get() = wallpaperdao.getFavorites()
@@ -23,6 +27,12 @@ get() = wallpaperdao.getFavorites()
 
    suspend fun fullWallpaper(id: Int) = wallpaperdao.getWallPaper(id)
 
+
+
+
+   /*suspend fun getCategory(categories: Categories) {
+ wallpaperdao.getCategoryItems(categories)
+    }*/
 
 
 }

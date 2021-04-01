@@ -36,7 +36,7 @@ class FavoritesFragment : Fragment(),WallPaperAdapter.OnClickPicListener {
         binding = FragmentFavoritesBinding.inflate(inflater,container,false)
 
         gridLayoutManager = GridLayoutManager(context,2)
-        wallpaperAdapter = WallPaperAdapter(emptyList<WallPaperModel>()  ,
+        wallpaperAdapter = WallPaperAdapter(
                 this){ wallPaperModel: WallPaperModel, b: Boolean ->
             toggleFavorites(wallPaperModel,b)
 
@@ -56,7 +56,7 @@ class FavoritesFragment : Fragment(),WallPaperAdapter.OnClickPicListener {
                 }
 
             }
-            wallpaperAdapter.updateData(wallpapers)
+            wallpaperAdapter.submitList(wallpapers)
         }
     }
 

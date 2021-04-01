@@ -1,7 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
-
+    id 'dagger.hilt.android.plugin'
     id 'androidx.navigation.safeargs.kotlin'
     id 'kotlin-kapt'
 
@@ -82,4 +82,9 @@ dependencies {
     //animations
 
     implementation "com.airbnb.android:lottie:$rootProject.lottieVersion"
+    implementation 'com.google.code.gson:gson:2.8.6'
+
+    //hilt
+    implementation "com.google.dagger:hilt-android:$hilt_version"
+    kapt "com.google.dagger:hilt-compiler:$hilt_version"
 }
