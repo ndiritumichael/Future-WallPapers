@@ -43,28 +43,29 @@ class WallpapersFragment : Fragment(),WallPaperAdapter.OnClickPicListener {
 
 
         gridLayoutManager = GridLayoutManager(context,2)
-        wallpaperAdapter = WallPaperAdapter(emptyList<WallPaperModel>()  ,
+        wallpaperAdapter = WallPaperAdapter(
                 this){ wallPaperModel: WallPaperModel, favorite: Boolean ->
             toggleFavorites(wallPaperModel,favorite)
 
         }
         wallpapersBinding.wallpaperRecycler.adapter = wallpaperAdapter
         wallpapersBinding.wallpaperRecycler.layoutManager = gridLayoutManager
+        wallpapersViewModel.wallpaperlist.observe(viewLifecycleOwner){ list->
+            if (list.isEmpty()){
+                wallpapersBinding.animationView.visibility = View.VISIBLE
+                wallpapersBinding.noFavorites.visibility = View.VISIBLE
+            }else{
+                wallpapersBinding.animationView.visibility = View.GONE
+                wallpapersBinding.noFavorites.visibility = View.GONE
+            }
+
+            wallpaperAdapter.submitList(list)
+        }
 
         return wallpapersBinding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
 
-     wallpapersViewModel.wallpaperlist.observe(viewLifecycleOwner){ list->
-         if (list.isEmpty()){
-             wallpapersBinding.animationView.visibility = View.VISIBLE
-             wallpapersBinding.noFavorites.visibility = View.VISIBLE
-         }
-            wallpaperAdapter.updateData(list)
-        }
-    }
 
     override fun onItemClicked(wallpaper: WallPaperModel) {
         val action = WallpapersFragmentDirections

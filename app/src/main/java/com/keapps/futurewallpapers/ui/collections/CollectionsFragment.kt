@@ -22,10 +22,8 @@ class CollectionsFragment : Fragment() {
         collectionsViewModel =
                 ViewModelProvider(this).get(CollectionsViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_collections, container, false)
-        val textView: TextView = root.findViewById(R.id.text_dashboard)
-        collectionsViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
+
+
         return root
     }
 }
