@@ -16,12 +16,15 @@ import com.keapps.futurewallpapers.WallPaperApplication
 import com.keapps.futurewallpapers.adapter.WallPaperAdapter
 import com.keapps.futurewallpapers.databinding.FragmentFavoritesBinding
 import com.keapps.futurewallpapers.model.WallPaperModel
-import com.keapps.futurewallpapers.ui.wallpapers.WallpapersFragmentDirections
 
+import com.keapps.futurewallpapers.ui.wallpapers.WallpapersFragmentDirections
+import dagger.hilt.android.AndroidEntryPoint
+import dagger.hilt.android.qualifiers.ApplicationContext
+import javax.inject.Inject
+@AndroidEntryPoint
 class FavoritesFragment : Fragment(),WallPaperAdapter.OnClickPicListener {
-    private val favoritesViewModel : FavoritesViewModel by viewModels {
-        FavWallViewModelFactory((activity?.application as WallPaperApplication).repository)
-    }
+
+   val favoritesViewModel : FavoritesViewModel by viewModels()
     private lateinit var binding: FragmentFavoritesBinding
     private lateinit var wallpaperAdapter : WallPaperAdapter
     private lateinit var gridLayoutManager: GridLayoutManager

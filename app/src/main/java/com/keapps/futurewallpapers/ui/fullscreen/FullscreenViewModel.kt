@@ -4,11 +4,14 @@ import android.util.Log
 import androidx.lifecycle.*
 import com.keapps.futurewallpapers.model.WallPaperModel
 import com.keapps.futurewallpapers.repository.WallpapersRepo
+import dagger.hilt.android.lifecycle.HiltViewModel
 
 import kotlinx.coroutines.launch
 import java.lang.IllegalArgumentException
+import javax.inject.Inject
 
-class FullscreenViewModel(val repo : WallpapersRepo): ViewModel() {
+@HiltViewModel
+class FullscreenViewModel @Inject constructor (val repo : WallpapersRepo): ViewModel() {
 
     val fullPaper : MutableLiveData<WallPaperModel> = MutableLiveData()
     fun getImage(id:Int) = viewModelScope.launch {
@@ -24,6 +27,7 @@ class FullscreenViewModel(val repo : WallpapersRepo): ViewModel() {
 
     }
 }
+/*
 
 
 @Suppress("UNCHECKED_CAST")
@@ -35,4 +39,4 @@ class FullWallViewModelFactory(private val repository: WallpapersRepo) : ViewMod
         throw IllegalArgumentException("Unknown Viewmodel Class")
     }
 
-}
+}*/

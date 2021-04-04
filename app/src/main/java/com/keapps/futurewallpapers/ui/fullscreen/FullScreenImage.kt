@@ -13,15 +13,14 @@ import coil.load
 import com.keapps.futurewallpapers.WallPaperApplication
 import com.keapps.futurewallpapers.databinding.ActivityFullScreenImageBinding
 import com.keapps.futurewallpapers.model.WallPaperModel
+import dagger.hilt.android.AndroidEntryPoint
 import java.io.IOException
-
+@AndroidEntryPoint
 class FullScreenImage : AppCompatActivity() {
     private lateinit var bitmap: Bitmap
     private val args: FullScreenImageArgs by navArgs()
     private lateinit var binding: ActivityFullScreenImageBinding
-    private val fullScreenViewModel : FullscreenViewModel by viewModels {
-        FullWallViewModelFactory((application as WallPaperApplication).repository)
-    }
+    private val fullScreenViewModel : FullscreenViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityFullScreenImageBinding.inflate(layoutInflater)

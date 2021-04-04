@@ -10,6 +10,8 @@ import androidx.sqlite.db.SupportSQLiteDatabase
 import com.keapps.futurewallpapers.model.Categories
 import com.keapps.futurewallpapers.model.WallPaperModel
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
 @Database(entities = [WallPaperModel::class],version = 2,exportSchema = false)
@@ -21,15 +23,14 @@ abstract class WallPaperRoomDatabase : RoomDatabase() {
     companion object{
         @Volatile
         private var INSTANCE : WallPaperRoomDatabase? = null
-        fun  getDatabase(context : Context,scope: CoroutineScope):WallPaperRoomDatabase{
+        fun  getDatabase(context : Context):WallPaperRoomDatabase{
             return INSTANCE ?:synchronized(this){
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
                     WallPaperRoomDatabase::class.java,
                     "wallpaper_database"
-                ) 
-                    /*.fallbackToDestructiveMigration()*/
-                    .addCallback(RoomWallCallBack(scope))
+                ).fallbackToDestructiveMigration()
+                    .addCallback(RoomWallCallBack())
 
                         .build()
                 INSTANCE = instance
@@ -38,13 +39,14 @@ abstract class WallPaperRoomDatabase : RoomDatabase() {
             }
 
 
+
         }
     }
-    private class RoomWallCallBack(private val scope:CoroutineScope):RoomDatabase.Callback() {
+     private class RoomWallCallBack:RoomDatabase.Callback() {
         override fun onCreate(db: SupportSQLiteDatabase) {
             super.onCreate(db)
             INSTANCE?.let {database ->
-                scope.launch {
+                GlobalScope.launch(Dispatchers.IO) {
                     populateDatabase(database.wallDao())
 
                     populateCategories(database.wallDao())
@@ -65,7 +67,7 @@ abstract class WallPaperRoomDatabase : RoomDatabase() {
                 "Pubg"
 
             )
-            wallDao.insertCategories(category)
+           // wallDao.insertCategories(category)
         }
 
         private suspend fun populateDatabase(wallDao: WallDAO) {

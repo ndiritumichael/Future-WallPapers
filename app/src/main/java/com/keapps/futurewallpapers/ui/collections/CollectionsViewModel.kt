@@ -11,7 +11,7 @@ class CollectionsViewModel(val wallpapersRepo: WallpapersRepo) : ViewModel() {
 
     init {
         viewModelScope.launch {
-            categories = wallpapersRepo.categories.asLiveData()
+           // categories = wallpapersRepo.categories.asLiveData()
         }
     }
 
