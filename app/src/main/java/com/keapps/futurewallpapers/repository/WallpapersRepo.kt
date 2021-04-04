@@ -5,13 +5,14 @@ import com.keapps.futurewallpapers.data.WallDAO
 import com.keapps.futurewallpapers.model.Categories
 import com.keapps.futurewallpapers.model.WallPaperModel
 import kotlinx.coroutines.flow.Flow
+import javax.inject.Inject
 
-class WallpapersRepo (val wallpaperdao : WallDAO){
+class WallpapersRepo @Inject constructor(val wallpaperdao : WallDAO){
     val allWallappers
     get() = wallpaperdao.getAllWallpapers()
 
-    val categories
-    get() = wallpaperdao.getAllCategories()
+  /*  val categories
+    get() = wallpaperdao.getAllCategories()*/
 
 val favWallPapers
 get() = wallpaperdao.getFavorites()

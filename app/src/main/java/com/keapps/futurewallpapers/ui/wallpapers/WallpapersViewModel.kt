@@ -3,11 +3,13 @@ package com.keapps.futurewallpapers.ui.wallpapers
 import androidx.lifecycle.*
 import com.keapps.futurewallpapers.model.WallPaperModel
 import com.keapps.futurewallpapers.repository.WallpapersRepo
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import java.lang.IllegalArgumentException
+import javax.inject.Inject
 
-
-class WallpapersViewModel(private val wallpapersRepo: WallpapersRepo) : ViewModel() {
+@HiltViewModel
+class WallpapersViewModel @Inject constructor(private val wallpapersRepo: WallpapersRepo) : ViewModel() {
 
     val wallpaperlist  :LiveData<List<WallPaperModel>> =wallpapersRepo.allWallappers.asLiveData()
 
@@ -23,7 +25,8 @@ class WallpapersViewModel(private val wallpapersRepo: WallpapersRepo) : ViewMode
 
 }
 
-class WallViewModelFactory(private val repository:WallpapersRepo):ViewModelProvider.Factory{
+/*
+class WallViewModelFactory @Inject constructor(private val repository:WallpapersRepo):ViewModelProvider.Factory{
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(WallpapersViewModel::class.java)){
             return WallpapersViewModel(repository)as T
@@ -31,4 +34,4 @@ class WallViewModelFactory(private val repository:WallpapersRepo):ViewModelProvi
         throw IllegalArgumentException("Unkown Viewmodel Class")
     }
 
-}
+}*/

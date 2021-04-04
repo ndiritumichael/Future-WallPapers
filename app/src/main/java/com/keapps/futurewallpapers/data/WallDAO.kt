@@ -25,11 +25,13 @@ interface WallDAO {
    @Query("SELECT * FROM wallpaper_table WHERE id = :wallid")
    suspend fun getWallPaper( wallid: Int):WallPaperModel?
 
-   @Insert(onConflict = OnConflictStrategy.REPLACE)
-   suspend fun insertCategories(categories: kotlin.collections.ArrayList<kotlin.String>)
+  /* @Insert(onConflict = OnConflictStrategy.REPLACE)
+   suspend fun insertCategories(categories: kotlin.collections.ArrayList<kotlin.String>)*/
+/*
 
    @Query("SELECT * FROM Categories")
     fun getAllCategories():Flow<List<String>>
+*/
 
    /* @Query("SELECT * FROM wallpaper_table WHERE category = :categories")
       suspend  fun getCategoryItems(categories: Categories)*/

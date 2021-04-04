@@ -20,16 +20,16 @@ import com.keapps.futurewallpapers.WallPaperApplication
 import com.keapps.futurewallpapers.adapter.WallPaperAdapter
 import com.keapps.futurewallpapers.databinding.FragmentWallpapersBinding
 import com.keapps.futurewallpapers.model.WallPaperModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class WallpapersFragment : Fragment(),WallPaperAdapter.OnClickPicListener {
 
 
     private lateinit var wallpapersBinding: FragmentWallpapersBinding
     private lateinit var wallpaperAdapter : WallPaperAdapter
     private lateinit var gridLayoutManager: GridLayoutManager
-    private val wallpapersViewModel : WallpapersViewModel by viewModels {
-        WallViewModelFactory((activity?.application as WallPaperApplication).repository)
-    }
+    private val wallpapersViewModel : WallpapersViewModel by viewModels()
 
     override fun onCreateView(
             inflater: LayoutInflater,
