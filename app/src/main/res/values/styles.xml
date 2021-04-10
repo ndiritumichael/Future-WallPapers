@@ -1,0 +1,13 @@
+<resources>
+
+    <style name="Widget.Theme.FutureWallPapers.ButtonBar.Fullscreen" parent="">
+        <item name="android:background">@color/black_overlay</item>
+        <item name="android:buttonBarStyle">?android:attr/buttonBarStyle</item>
+    </style>
+    <style name="toolbar_theme" parent="ThemeOverlay.MaterialComponents.Toolbar.Primary">
+
+        <item name="android:textColorPrimary">@color/white</item>
+
+        <item name="colorOnPrimary">@color/white</item>
+    </style>
+</resources>

@@ -3,16 +3,14 @@ package com.keapps.futurewallpapers.ui.collections
 import androidx.lifecycle.*
 import com.keapps.futurewallpapers.model.Categories
 import com.keapps.futurewallpapers.repository.WallpapersRepo
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class CollectionsViewModel(val wallpapersRepo: WallpapersRepo) : ViewModel() {
-    private lateinit var categories: LiveData<List<String>>
+@HiltViewModel
+class CollectionsViewModel @Inject constructor( val wallpapersRepo: WallpapersRepo) : ViewModel() {
 
-    init {
-        viewModelScope.launch {
-           // categories = wallpapersRepo.categories.asLiveData()
-        }
-    }
+
 
 }

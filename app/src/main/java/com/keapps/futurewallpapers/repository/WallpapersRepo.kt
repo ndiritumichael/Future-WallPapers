@@ -28,6 +28,10 @@ get() = wallpaperdao.getFavorites()
 
    suspend fun fullWallpaper(id: Int) = wallpaperdao.getWallPaper(id)
 
+    suspend fun  getwallinCat(category: Int)= wallpaperdao.getwallpapersCategory(category)
+
+    suspend fun getcatinWall(id: Int)= wallpaperdao.getCategoryinWall(id)
+
 
 
 

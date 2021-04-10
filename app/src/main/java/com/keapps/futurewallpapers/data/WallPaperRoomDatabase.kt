@@ -7,6 +7,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import androidx.sqlite.db.SupportSQLiteDatabase
+import com.keapps.futurewallpapers.data.relationships.WallpaperCategorycrossref
 import com.keapps.futurewallpapers.model.Categories
 import com.keapps.futurewallpapers.model.WallPaperModel
 import kotlinx.coroutines.CoroutineScope
@@ -14,7 +15,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
-@Database(entities = [WallPaperModel::class],version = 2,exportSchema = false)
+@Database(entities = [WallPaperModel::class, WallpaperCategorycrossref::class,Categories::class],version = 3,exportSchema = false)
 
 abstract class WallPaperRoomDatabase : RoomDatabase() {
 
@@ -50,12 +51,14 @@ abstract class WallPaperRoomDatabase : RoomDatabase() {
                     populateDatabase(database.wallDao())
 
                     populateCategories(database.wallDao())
+                    populateCrossRef(database.wallDao())
                 }
 
             }
         }
 
         private suspend fun populateCategories(wallDao: WallDAO){
+            var id =1
             val category = arrayListOf(
             "Mountains",
             "Minimalist",
@@ -67,8 +70,27 @@ abstract class WallPaperRoomDatabase : RoomDatabase() {
                 "Pubg"
 
             )
-           // wallDao.insertCategories(category)
+            category.forEach{
+                wallDao.insertCategories(Categories(id,it))
+                id+=1
+            }
+
         }
+
+         private suspend fun populateCrossRef(wallDao: WallDAO){
+             val ref = arrayListOf(
+                 WallpaperCategorycrossref(1,1),
+                 WallpaperCategorycrossref(1,2),
+                 WallpaperCategorycrossref(1,3),
+                 WallpaperCategorycrossref(2,4),
+                 WallpaperCategorycrossref(3,1),
+                 WallpaperCategorycrossref(5,4),
+                 WallpaperCategorycrossref(4,5),
+             )
+             ref.forEach {
+                 wallDao.insertCrossRef(it)
+             }
+         }
 
         private suspend fun populateDatabase(wallDao: WallDAO) {
            // wallDao.deleteAll()

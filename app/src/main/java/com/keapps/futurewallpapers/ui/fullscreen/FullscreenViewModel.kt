@@ -2,6 +2,8 @@ package com.keapps.futurewallpapers.ui.fullscreen
 
 import android.util.Log
 import androidx.lifecycle.*
+import com.keapps.futurewallpapers.data.relationships.WallpaperinCategories
+import com.keapps.futurewallpapers.model.Categories
 import com.keapps.futurewallpapers.model.WallPaperModel
 import com.keapps.futurewallpapers.repository.WallpapersRepo
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -13,6 +15,16 @@ import javax.inject.Inject
 @HiltViewModel
 class FullscreenViewModel @Inject constructor (val repo : WallpapersRepo): ViewModel() {
 
+
+  val _categories : MutableLiveData<WallpaperinCategories> = MutableLiveData()
+
+            fun getCat(id: Int)= viewModelScope.launch {
+             _categories.value=   repo.getcatinWall(id)
+            }
+    val categories
+        get() = _categories
+
+
     val fullPaper : MutableLiveData<WallPaperModel> = MutableLiveData()
     fun getImage(id:Int) = viewModelScope.launch {
       fullPaper.value = repo.fullWallpaper(id)
@@ -20,6 +32,10 @@ class FullscreenViewModel @Inject constructor (val repo : WallpapersRepo): ViewM
         Log.d("FullViewModel","$id")
 
     }
+
+
+
+
 
     fun updateData(wallPaperModel: WallPaperModel) = viewModelScope.launch {
        repo.updateData(wallPaperModel)

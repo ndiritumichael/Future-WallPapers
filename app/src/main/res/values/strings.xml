@@ -10,4 +10,6 @@
     <string name="info">info</string>
     <string name="no_favorites">No Favorites</string>
     <string name="pubg_mobile">Pubg Mobile</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
 </resources>

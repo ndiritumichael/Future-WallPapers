@@ -5,7 +5,7 @@ import com.keapps.futurewallpapers.model.WallPaperModel
 
 class WallpaperDiffUtil() :DiffUtil.ItemCallback<WallPaperModel>() {
     override fun areItemsTheSame(oldItem: WallPaperModel, newItem: WallPaperModel): Boolean {
-        return oldItem.id == newItem.id
+        return oldItem.wallId == newItem.wallId
     }
 
     override fun areContentsTheSame(oldItem: WallPaperModel, newItem: WallPaperModel): Boolean {

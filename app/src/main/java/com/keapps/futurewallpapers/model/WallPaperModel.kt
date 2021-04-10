@@ -7,7 +7,7 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "wallpaper_table")
 data class WallPaperModel(
         @PrimaryKey
-    val id : Int,
+    val wallId : Int,
         val Title : String,
         val lowHd :  String,
         val fullHd : String,
