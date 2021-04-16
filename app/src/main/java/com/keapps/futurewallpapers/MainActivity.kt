@@ -62,12 +62,14 @@ class MainActivity : AppCompatActivity() {
                 navView.visibility = View.GONE
                 mainappbar.visibility = View.GONE
             }
+/*
            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
            window.statusBarColor = Color.TRANSPARENT
             window.navigationBarColor= Color.WHITE
             window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN)
 
+*/
 
         }
         }

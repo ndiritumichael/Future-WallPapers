@@ -49,13 +49,9 @@
     </activity>
     <dialog
         android:id="@+id/itemListDialogFragment"
-        android:name="com.keapps.futurewallpapers.ItemListDialogFragment"
+        android:name="com.keapps.futurewallpapers.ui.dialog.ItemListDialogFragment"
         android:label="fragment_item_list_dialog_list_dialog"
-        tools:layout="@layout/fragment_item_list_dialog_list_dialog" >
-        <action
-            android:id="@+id/action_itemListDialogFragment_to_fullscreenFragment"
-            app:destination="@id/fullscreenFragment" />
-    </dialog>
+        tools:layout="@layout/fragment_item_list_dialog" />
     <fragment
         android:id="@+id/fullscreenFragment"
         android:name="com.keapps.futurewallpapers.ui.fullscreen.FullscreenFragment"
