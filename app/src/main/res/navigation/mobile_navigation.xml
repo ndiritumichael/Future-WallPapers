@@ -11,8 +11,13 @@
         android:label="@string/title_wallpapers"
         tools:layout="@layout/fragment_wallpapers" >
         <action
-            android:id="@+id/action_navigation_wallpapers_to_fullScreenImage"
-            app:destination="@id/fullScreenImage" />
+            android:id="@+id/action_navigation_wallpapers_to_fullscreenFragment"
+            app:destination="@id/fullscreenFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@animator/nav_default_enter_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_enter_anim"
+            app:launchSingleTop="true" />
     </fragment>
 
     <fragment
@@ -27,8 +32,11 @@
         android:label="@string/title_favorites"
         tools:layout="@layout/fragment_favorites" >
         <action
-            android:id="@+id/action_navigation_favorites_to_fullScreenImage"
-            app:destination="@id/fullScreenImage" />
+            android:id="@+id/action_navigation_favorites_to_fullscreenFragment"
+            app:destination="@id/fullscreenFragment"
+            app:popUpTo="@id/fullscreenFragment"
+            app:popUpToInclusive="true"
+            app:launchSingleTop="true" />
     </fragment>
     <activity
         android:id="@+id/fullScreenImage"
@@ -39,4 +47,32 @@
             android:name="imageId"
             app:argType="integer" />
     </activity>
+    <dialog
+        android:id="@+id/itemListDialogFragment"
+        android:name="com.keapps.futurewallpapers.ui.dialog.ItemListDialogFragment"
+        android:label="fragment_item_list_dialog_list_dialog"
+        tools:layout="@layout/fragment_item_list_dialog" />
+    <fragment
+        android:id="@+id/fullscreenFragment"
+        android:name="com.keapps.futurewallpapers.ui.fullscreen.FullscreenFragment"
+        android:label="fragment_fullscreen"
+        tools:layout="@layout/fragment_fullscreen" >
+        <action
+            android:id="@+id/action_fullscreenFragment_to_itemListDialogFragment"
+            app:destination="@id/itemListDialogFragment" />
+        <action
+            android:id="@+id/action_fullscreenFragment_to_navigation_wallpapers"
+            app:destination="@id/navigation_wallpapers" />
+        <action
+            android:id="@+id/action_fullscreenFragment_to_navigation_favorites"
+            app:destination="@id/navigation_favorites" />
+        <argument
+            android:name="wallpaperId"
+            app:argType="integer"
+            android:defaultValue="0" />
+        <argument
+            android:name="source"
+            app:argType="string"
+            app:nullable="true" />
+    </fragment>
 </navigation>

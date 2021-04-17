@@ -6,5 +6,6 @@ import androidx.room.PrimaryKey
 @Entity
 data class Categories(
     @PrimaryKey
+    val catId :Int,
     val categories:String
 )

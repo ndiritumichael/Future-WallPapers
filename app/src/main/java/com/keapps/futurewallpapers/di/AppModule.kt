@@ -38,4 +38,9 @@ object AppModule {
     @Provides
     @Singleton
     fun providesRepository(wallDAO: WallDAO) = WallpapersRepo(wallDAO)
+
+
+
+
+
 }

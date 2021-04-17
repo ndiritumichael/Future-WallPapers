@@ -10,4 +10,10 @@
     <string name="info">info</string>
     <string name="no_favorites">No Favorites</string>
     <string name="pubg_mobile">Pubg Mobile</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="apply_wallpaper">Apply WallPaper</string>
+    <string name="set_lock_screen">Set Lock Screen</string>
+    <string name="set_home_screen">Set Home Screen</string>
+    <string name="both_home_and_lockscreen">Both Home and Lockscreen</string>
 </resources>

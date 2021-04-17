@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/list"
+    style="Theme.MaterialComponents.Light.BottomSheetDialog"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="16dp"
+
+
+    android:layout_marginEnd="16dp"
+    android:clipToPadding="false"
+    android:backgroundTint="@color/white"
+    android:paddingTop="@dimen/list_item_spacing_half"
+    android:paddingBottom="@dimen/list_item_spacing_half"
+    >
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:padding="16dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            android:text="@string/apply_wallpaper"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_marginTop="16dp"
+            android:textColor="@color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/lockscreen"
+            android:text="@string/set_lock_screen"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
+        <com.google.android.material.button.MaterialButton
+            android:layout_marginTop="16dp"
+            android:textColor="@color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/homescreen"
+            android:text="@string/set_home_screen"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
+        <com.google.android.material.button.MaterialButton
+            android:layout_marginTop="16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/both"
+            android:textColor="@color/black"
+            android:text="@string/both_home_and_lockscreen"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
+
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+
+
+
+</com.google.android.material.card.MaterialCardView>

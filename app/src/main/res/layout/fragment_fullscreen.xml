@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".ui.fullscreen.FullScreenImage">
+
+
+          <!--  <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@android:color/transparent"
+                android:elevation="0dp"
+                style="@style/AppTheme.ActionBar.Transparent"
+                android:theme="@style/toolbar_theme"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />-->
+
+
+        <ImageView
+
+            android:id="@+id/fullscreenimage"
+            android:scaleType="fitXY"
+
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/title_favorites" />
+
+
+            <View
+                android:background="@drawable/gradient"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"/>
+
+    <View
+
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:background="@drawable/gradient_flipped"
+        app:layout_constraintTop_toTopOf="@id/fullscreenimage"
+        tools:layout_editor_absoluteX="-48dp" />
+
+    <ImageView
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/fullscreenimage"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="32dp"
+        android:id="@+id/back_button"
+        android:src="@drawable/ic_baseline_arrow_back_24"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
+    <com.google.android.material.textview.MaterialTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@+id/fullscreenimage"
+        android:layout_marginTop="16dp"
+        android:id="@+id/wall_title"
+        android:textColor="@color/black"
+        tools:text="Minimal UI"
+        android:textSize="32sp"
+        app:layout_constraintStart_toEndOf="@+id/back_button"
+        android:layout_marginStart="16dp"
+        />
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_marginBottom="8dp"
+        android:layout_width="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        >
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="wrap_content"
+            android:src="@drawable/ic_baseline_file_upload"
+            android:layout_height="wrap_content"
+            android:id="@+id/apply_wallpaper"
+            />
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:id="@+id/apply_text"
+            android:textColor="@android:color/white"
+            android:layout_height="wrap_content"
+            android:text="@string/apply"/>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_marginBottom="8dp"
+        android:layout_width="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="48dp"
+        >
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="wrap_content"
+            android:src="@drawable/ic_baseline_info_24"
+            android:layout_height="wrap_content"
+            android:id="@+id/show_info"
+            />
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:id="@+id/info_text"
+
+            android:textColor="@android:color/white"
+            android:layout_height="wrap_content"
+            android:text="@string/info"/>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:src="@drawable/ic_favorite_ticked"
+        android:id="@+id/favorite_ticked"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="32dp"
+        android:layout_marginEnd="60dp"
+        android:contentDescription="@string/ticked_icon" />
+    <ImageView
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_baseline_favorite_unticked"
+        android:id="@+id/favorite_unticked"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="32dp"
+        android:layout_marginEnd="60dp"
+        android:contentDescription="@string/unticked_icon" />
+    <TextView
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="48dp"
+        android:id="@+id/favorites_text"
+        android:textColor="@android:color/white"
+        android:text="@string/title_favorites"
+        android:layout_marginBottom="8dp"/>
+
+    <ProgressBar
+        android:id="@+id/loading_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:visibility="gone"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <com.google.android.material.card.MaterialCardView
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:visibility="gone"
+        tools:visibility="visible"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/list"
+        style="Theme.MaterialComponents.Light.BottomSheetDialog"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+
+
+        android:layout_marginEnd="16dp"
+        android:clipToPadding="false"
+        android:backgroundTint="@color/white"
+        android:paddingTop="@dimen/list_item_spacing_half"
+        android:paddingBottom="@dimen/list_item_spacing_half"
+        >
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:padding="16dp"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                android:text="@string/apply_wallpaper"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:layout_marginTop="16dp"
+                android:textColor="@color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/lockscreen"
+                android:text="@string/set_lock_screen"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
+            <com.google.android.material.button.MaterialButton
+                android:layout_marginTop="16dp"
+                android:textColor="@color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/homescreen"
+                android:text="@string/set_home_screen"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
+            <com.google.android.material.button.MaterialButton
+                android:layout_marginTop="16dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/both"
+                android:textColor="@color/black"
+                android:text="@string/both_home_and_lockscreen"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
+
+<com.google.android.material.button.MaterialButton
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="cancel"
+    android:id="@+id/cancel_bt"/>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+        <ProgressBar
+            android:layout_gravity="center"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/card_progress"/>
+
+
+
+
+
+    </com.google.android.material.card.MaterialCardView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
