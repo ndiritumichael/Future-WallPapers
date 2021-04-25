@@ -49,5 +49,9 @@ interface WallDAO {
     @Query("SELECT * FROM wallpaper_table WHERE  wallId = :wallpaper")
     suspend fun getCategoryinWall(wallpaper : Int): WallpaperinCategories
 
+    @Transaction
+    @Query("SELECT * FROM wallpaper_table")
+    fun getAllCategories():Flow<List<CategoryinWall>>
+
 
 }

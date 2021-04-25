@@ -11,6 +11,8 @@ import javax.inject.Inject
 @HiltViewModel
 class CollectionsViewModel @Inject constructor( val wallpapersRepo: WallpapersRepo) : ViewModel() {
 
+    suspend fun getAllCategories()=wallpapersRepo.getAllCategories().asLiveData()
+
 
 
 }

@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity() {
      WallViewModelFactory((application as WallPaperApplication).repository)
  }*/
     override fun onCreate(savedInstanceState: Bundle?) {
-   val window= this@MainActivity.window
+
         super.onCreate(savedInstanceState)
 
         mainActivityMainBinding = ActivityMainBinding.inflate(layoutInflater)
