@@ -1,15 +1,16 @@
 package com.keapps.futurewallpapers.utils
 
 import androidx.recyclerview.widget.DiffUtil
+import com.keapps.futurewallpapers.data.relationships.CategoryinWall
 import com.keapps.futurewallpapers.model.Categories
 import com.keapps.futurewallpapers.model.CategoriesViewer
 
-class CollectionsDiffUtil():DiffUtil.ItemCallback<CategoriesViewer>() {
-    override fun areItemsTheSame(oldItem: CategoriesViewer, newItem: CategoriesViewer): Boolean {
-      return oldItem.name == newItem.name
+class CollectionsDiffUtil():DiffUtil.ItemCallback<CategoryinWall>() {
+    override fun areItemsTheSame(oldItem: CategoryinWall, newItem: CategoryinWall): Boolean {
+      return oldItem.category.catId == newItem.category.catId
     }
 
-    override fun areContentsTheSame(oldItem: CategoriesViewer, newItem: CategoriesViewer): Boolean {
+    override fun areContentsTheSame(oldItem: CategoryinWall, newItem: CategoryinWall): Boolean {
         return oldItem == newItem
     }
 

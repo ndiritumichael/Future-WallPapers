@@ -50,7 +50,7 @@ interface WallDAO {
     suspend fun getCategoryinWall(wallpaper : Int): WallpaperinCategories
 
     @Transaction
-    @Query("SELECT * FROM wallpaper_table")
+    @Query("SELECT * FROM Categories")
     fun getAllCategories():Flow<List<CategoryinWall>>
 
 

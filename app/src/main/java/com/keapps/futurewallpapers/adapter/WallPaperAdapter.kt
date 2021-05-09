@@ -105,24 +105,7 @@ class WallPaperAdapter(
     }
 
 
-   //override fun getItemCount() = wallpaperList.size
-  /*  fun updateData(newList: List<WallPaperModel>) {
 
-
-        val diffUtil = WallpaperDiffUtil(newList, wallpaperList)
-        val diffResults = DiffUtil.calculateDiff(diffUtil)
-        wallpaperList = newList
-        diffResults.dispatchUpdatesTo(this)
-        //notifyDataSetChanged()
-
-    }*/
-  /*  fun updateData1(list: List<WallPaperModel>?) {
-        if (list != null) {
-            wallpaperList = list
-        }
-        notifyDataSetChanged()
-
-    }*/
 
     interface OnClickPicListener {
         fun onItemClicked(wallpaper: WallPaperModel)

@@ -51,13 +51,19 @@ class MainActivity : AppCompatActivity() {
 
     navView.setOnNavigationItemReselectedListener {  }
     navController.addOnDestinationChangedListener{ navController: NavController, navDestination: NavDestination, bundle: Bundle? ->
-        when(navDestination.id){ R.id.navigation_wallpapers, R.id.navigation_collections, R.id.navigation_favorites ->{
+        when(navDestination.id)
+        { R.id.navigation_wallpapers, R.id.navigation_collections, R.id.navigation_favorites ->{
             mainActivityMainBinding.apply {
                 navView.visibility = View.VISIBLE
                 mainappbar.visibility = View.VISIBLE
            //     window.setFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN,WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN)
             }
-        } else -> {
+        }
+            R.id.singleCollection -> {
+              mainActivityMainBinding.mainappbar.visibility = View.VISIBLE
+
+            }
+            else -> {
             mainActivityMainBinding.apply {
                 navView.visibility = View.GONE
                 mainappbar.visibility = View.GONE
