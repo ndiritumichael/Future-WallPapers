@@ -11,8 +11,8 @@ class WallpapersRepo @Inject constructor(val wallpaperdao : WallDAO){
     val allWallappers
     get() = wallpaperdao.getAllWallpapers()
 
-  /*  val categories
-    get() = wallpaperdao.getAllCategories()*/
+    val categories
+    get() = wallpaperdao.getAllCategories()
 
 val favWallPapers
 get() = wallpaperdao.getFavorites()
@@ -31,6 +31,7 @@ get() = wallpaperdao.getFavorites()
     suspend fun  getwallinCat(category: Int)= wallpaperdao.getwallpapersCategory(category)
 
     suspend fun getcatinWall(id: Int)= wallpaperdao.getCategoryinWall(id)
+
 
 
 

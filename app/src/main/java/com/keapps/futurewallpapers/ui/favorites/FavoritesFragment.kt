@@ -18,7 +18,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class FavoritesFragment : Fragment(), WallPaperAdapter.OnClickPicListener {
 
-    val favoritesViewModel: FavoritesViewModel by viewModels()
+    private val favoritesViewModel: FavoritesViewModel by viewModels()
     private lateinit var binding: FragmentFavoritesBinding
     private lateinit var wallpaperAdapter: WallPaperAdapter
     private lateinit var gridLayoutManager: GridLayoutManager
