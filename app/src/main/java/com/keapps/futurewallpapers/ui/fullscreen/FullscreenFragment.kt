@@ -64,22 +64,9 @@ class FullscreenFragment : Fragment(R.layout.fragment_fullscreen) {
 
         fullScreenViewModel.getCat(args.wallpaperId)
         binding.backButton.setOnClickListener {
-            if (args.source == Consts.singlecollection){
+
                 findNavController().navigateUp()
-            } else{
-                when (args.source) {
-                    Consts.favorites -> action =
-                        FullscreenFragmentDirections.actionFullscreenFragmentToNavigationFavorites()
 
-                    Consts.allwallpapers -> action =
-                        FullscreenFragmentDirections.actionFullscreenFragmentToNavigationWallpapers()
-
-
-
-                }
-
-                findNavController().navigate(action)
-            }
 
         }
 
