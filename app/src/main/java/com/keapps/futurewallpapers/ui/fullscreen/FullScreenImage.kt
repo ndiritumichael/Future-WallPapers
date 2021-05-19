@@ -34,7 +34,7 @@ class FullScreenImage : AppCompatActivity() {
 
         fullScreenViewModel.fullPaper.observe(this){wallPaper ->
             setupUI(wallPaper)
-           supportActionBar?.title = wallPaper.Title
+           supportActionBar?.title = wallPaper.title
 
         }
         fullScreenViewModel.categories.observe(this){

@@ -72,8 +72,8 @@ class FullscreenFragment : Fragment(R.layout.fragment_fullscreen) {
 
         fullScreenViewModel.fullPaper.observe(viewLifecycleOwner) { wallPaper ->
             setupUI(wallPaper)
-            binding.wallTitle.text = wallPaper.Title
-            (activity as AppCompatActivity).supportActionBar!!.title = wallPaper.Title
+            binding.wallTitle.text = wallPaper.title
+            (activity as AppCompatActivity).supportActionBar!!.title = wallPaper.title
 
         }
         fullScreenViewModel.categories.observe(viewLifecycleOwner) {
@@ -103,7 +103,7 @@ class FullscreenFragment : Fragment(R.layout.fragment_fullscreen) {
             showNotFav()
         }
 
-        binding.fullscreenimage.load(wallPaperModel.lowHd)
+        binding.fullscreenimage.load(wallPaperModel.fullHd)
         binding.apply {
             infoText.setOnClickListener {
 

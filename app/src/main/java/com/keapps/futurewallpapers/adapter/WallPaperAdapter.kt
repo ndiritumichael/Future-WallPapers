@@ -82,7 +82,7 @@ class WallPaperAdapter(
         holder.bind(getItem(position), favListener)
 
         holder.apply {
-            binding.wallpaperTitle.text = getItem(position).Title
+            binding.wallpaperTitle.text = getItem(position).title
             if (getItem(position).favorites) {
                 showFav()
             } else {
