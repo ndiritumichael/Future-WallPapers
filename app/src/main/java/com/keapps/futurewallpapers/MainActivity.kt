@@ -21,6 +21,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.appbar.MaterialToolbar
 import com.keapps.futurewallpapers.databinding.ActivityMainBinding
+import com.keapps.futurewallpapers.ui.wallpapers.WallpapersViewModel
 
 
 import dagger.hilt.android.AndroidEntryPoint
@@ -28,13 +29,13 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
  private lateinit var mainActivityMainBinding: ActivityMainBinding
+ private val viewmodel : WallpapersViewModel by viewModels()
 
-/* private val wallpapersViewModel : WallpapersViewModel by viewModels {
-     WallViewModelFactory((application as WallPaperApplication).repository)
- }*/
+
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
+        viewmodel.getfirebaseWallpapers()
 
         mainActivityMainBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(mainActivityMainBinding.root)

@@ -9,13 +9,13 @@ import kotlinx.parcelize.Parcelize
 @Entity(tableName = "wallpaper_table")
 data class WallPaperModel(
         @PrimaryKey
-    val wallId : Int,
-        val Title : String,
-        val lowHd :  String,
-        val fullHd : String,
-        val authorName : String,
-        var favorites : Boolean,
-        val category: String
+    val wallId : Int = 0,
+        val title : String = "",
+        val lowHd :  String = "",
+        val fullHd : String="",
+        val authorName : String = "",
+        var favorites : Boolean = false,
+        val category: String = "Pubg"
 ):Parcelable
 
 

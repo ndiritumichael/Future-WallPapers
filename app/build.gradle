@@ -8,6 +8,7 @@ plugins {
 
 
 }
+apply plugin: 'com.google.gms.google-services'
 
 
 android {
@@ -48,16 +49,14 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation 'androidx.core:core-ktx:1.3.2'
     implementation 'androidx.appcompat:appcompat:1.2.0'
-
-
-
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.recyclerview:recyclerview:1.1.0'
 
     implementation 'androidx.navigation:navigation-fragment-ktx:2.3.4'
     implementation 'androidx.navigation:navigation-ui-ktx:2.3.4'
 //room
     implementation "androidx.room:room-ktx:$rootProject.room_version"
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    implementation 'androidx.recyclerview:recyclerview:1.1.0'
+
     kapt "androidx.room:room-compiler:$rootProject.room_version"
     androidTestImplementation "androidx.room:room-testing:$rootProject.room_version"
     implementation "androidx.room:room-runtime:$rootProject.room_version"
@@ -91,4 +90,9 @@ dependencies {
     kapt "com.google.dagger:hilt-compiler:$hilt_version"
 
     implementation 'com.github.yogacp:android-viewbinding:1.0.2'
+
+    //firebase
+    implementation platform('com.google.firebase:firebase-bom:28.0.1')
+    implementation 'com.google.firebase:firebase-analytics-ktx'
+    implementation 'com.google.firebase:firebase-firestore-ktx'
 }
