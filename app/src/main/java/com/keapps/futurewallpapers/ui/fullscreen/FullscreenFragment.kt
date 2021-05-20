@@ -248,6 +248,7 @@ class FullscreenFragment : Fragment(R.layout.fragment_fullscreen) {
                 2 -> {
 
                     wallpaperManager.run {
+                        setBitmap(bitmap)
                         // setBitmap(bitmap, null, true, WallpaperManager.FLAG_LOCK)
                         toasting()
                         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
@@ -270,7 +271,7 @@ class FullscreenFragment : Fragment(R.layout.fragment_fullscreen) {
                             "Succesfully Updated Wallpaper",
                             Toast.LENGTH_SHORT
                         ).show()
-                        toasting()
+                      //  toasting()
                         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
                             setBitmap(bitmap, null, true, WallpaperManager.FLAG_LOCK)
                         } else {
