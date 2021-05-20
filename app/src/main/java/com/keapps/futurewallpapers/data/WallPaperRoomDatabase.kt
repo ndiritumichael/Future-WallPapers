@@ -31,7 +31,7 @@ abstract class WallPaperRoomDatabase : RoomDatabase() {
                     WallPaperRoomDatabase::class.java,
                     "wallpaper_database"
                 ).fallbackToDestructiveMigration()
-                  //  .addCallback(RoomWallCallBack())
+                    .addCallback(RoomWallCallBack())
 
                         .build()
                 INSTANCE = instance
